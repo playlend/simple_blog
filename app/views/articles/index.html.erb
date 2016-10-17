@@ -3,8 +3,12 @@
 <ul id="articles">
 	<% @articles.each do |article| %>
 		<li>
-			<%= link_to article.title, article_path(article), class: 'article_title', id: "article_#{article.id}" %>
-
+			<%= link_to article.title, article_path(article), class: 'article_title', id: "article_#{article.id}" %><br />
+			<p>
+			<% if article.image.exists? %>
+				<%= image_tag article.image.url(:thumb) %>
+			<% end %>
+			</p>
 		</li>
 	<% end %>
 </ul>
